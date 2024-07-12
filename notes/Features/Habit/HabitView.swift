@@ -68,6 +68,11 @@ struct HabitView: View {
             }label:{
                 Text("Add SubFolderFolder")
             }
+            Button{
+                viewModel.clearAll()
+            }label:{
+                Text("Clear All")
+            }
         }
         .onAppear{
             viewModel.modelContext = modelContext

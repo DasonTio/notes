@@ -92,5 +92,12 @@ class HabitViewModel{
     func deleteHabit(_ model: Habit){
         modelContext?.delete(model)
     }
+    
+    func clearAll(){
+        try? modelContext?.delete(model: Habit.self)
+        try? modelContext?.delete(model: Note.self)
+        try? modelContext?.delete(model: NoteLog.self)
+        try? modelContext?.delete(model: Folder.self)
+    }
 }
 

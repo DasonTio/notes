@@ -58,14 +58,20 @@ struct NoteView: View {
                             ))
                         }
                         Divider()
-                        ForEach($model.note.contents){ $note in
-                            Text(note.createdAt.noteFormatted())
-                                .font(.headline)
-                            
-                            TextField(
-                                text: $note.content,
-                                axis: .vertical
-                            ){}
+                        ForEach($model.note.contents) { $note in
+                            VStack(alignment: .leading) {
+                                
+                                Text(note.createdAt.noteFormatted())
+                                    .font(.headline)
+                                
+                                TextView(
+                                    attributedText: $note.content,
+                                    allowsEditingTextAttributes: true,
+                                    font: .systemFont(ofSize: 24)
+                                )
+                                .frame(maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
+                            }
+                            .padding(.vertical)
                         }
                     }.padding(.horizontal)
             }

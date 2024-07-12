@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct notesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
+            HabitView()
+        }.modelContainer(for: [
+            Note.self,
+            NoteLog.self,
+            HabitCategory.self,
+            Habit.self,
+            HabitLog.self,
+            Folder.self,
+            Checklist.self,
+        ])
     }
 }

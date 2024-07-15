@@ -21,7 +21,5 @@ struct TextView: UIViewRepresentable {
         uiView.attributedText = attributedText
         uiView.allowsEditingTextAttributes = allowsEditingTextAttributes
         uiView.font = font
-        
-        print("UI Updated")
     }
 }

@@ -18,67 +18,74 @@ extension Date{
 }
 
 struct NoteView: View {
-    @Binding var model: Habit
-    @State var isActive: Bool = false
+    var id:String
+    @Environment(\.modelContext) var modelContext
+    @StateObject private var viewModel = NoteViewModel()
 
     var body: some View {
         ZStack{
             ScrollView{
                     VStack(alignment: .leading){
-                        Text(model.title)
-                            .font(.title)
-                            .fontWeight(.bold)
-                        
-                        HStack{
-                            Text("Repeat")
-                            Button{
-                                isActive = true
-                            }label:{
-                                Text("Select")
+                        if let note = viewModel.data.first{
+                            Text(note.title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            
+                            HStack{
+                                Text("Repeat")
+                                Button{
+                                    viewModel.isActive = true
+                                }label:{
+                                    Text("Select")
+                                }
                             }
-                        }
-                        
-                        Divider()
-                        
-                        Text("My Goals")
-                            .font(.headline)
-                        
-                        TextField(text: $model.goal){}
-                        
-                        Text("My Action Plan")
-                            .font(.headline)
-                        
-                        ForEach($model.plans){ $list in
-                            Toggle(
-                                list.content,
-                                isOn: $list.done
-                            ).toggleStyle(ToggleCheckboxStyle(
-                                text: $list.content,
-                                axis: .vertical
-                            ))
-                        }
-                        Divider()
-                        ForEach($model.note.contents) { $note in
-                            VStack(alignment: .leading) {
-                                
-                                Text(note.createdAt.noteFormatted())
-                                    .font(.headline)
-                                
-                                TextView(
-                                    attributedText: $note.content,
-                                    allowsEditingTextAttributes: true,
-                                    font: .systemFont(ofSize: 24)
-                                )
-                                .frame(maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
+                            
+                            Divider()
+                            
+                            Text("My Goals")
+                                .font(.headline)
+                            
+                            TextField(text: $viewModel.data[0].goal){}
+                            
+                            Text("My Action Plan")
+                                .font(.headline)
+                            
+                            ForEach($viewModel.data[0].plans){ $list in
+                                Toggle(
+                                    list.content,
+                                    isOn: $list.done
+                                ).toggleStyle(ToggleCheckboxStyle(
+                                    text: $list.content,
+                                    axis: .vertical
+                                ))
                             }
-                            .padding(.vertical)
+                            Divider()
+                            ForEach($viewModel.data[0].note.contents) { $note in
+                                VStack(alignment: .leading) {
+                                    
+                                    Text(note.createdAt.noteFormatted())
+                                        .font(.headline)
+                                    
+                                    TextView(
+                                        attributedText: $note.content,
+                                        allowsEditingTextAttributes: true,
+                                        font: .systemFont(ofSize: 24)
+                                    )
+                                    .frame(maxWidth: .infinity, minHeight: 200, maxHeight: .infinity)
+                                }
+                                .padding(.vertical)
+                            }
                         }
                     }.padding(.horizontal)
             }
             
-            if isActive {
-                RepeatNoteView(isActive: $isActive)
+            if viewModel.isActive {
+                RepeatNoteView(isActive: $viewModel.isActive)
             }
+        }.onAppear{
+            print(id)
+            viewModel.modelContext = modelContext
+            viewModel.fetchById(id: id)
         }
     }
 }

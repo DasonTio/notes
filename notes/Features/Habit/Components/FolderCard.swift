@@ -30,6 +30,6 @@ struct FolderCard: View {
             ForEach(data.filter{$0.folderId == model.id}) { note in
                 HabitCard(model: .constant(note))
             }
-        }.padding()
+        }
     }
 }

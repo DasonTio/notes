@@ -10,9 +10,11 @@ import SwiftData
 
 @main
 struct notesApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            HabitView()
+            ContentView()
+                .environmentObject(NavigationViewModel())
         }.modelContainer(for: [
             Note.self,
             NoteLog.self,

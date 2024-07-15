@@ -30,6 +30,7 @@
 		EF776CB92C3FC05300C8D119 /* NoteLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF776CB82C3FC05300C8D119 /* NoteLogModel.swift */; };
 		EF776CBB2C3FD17600C8D119 /* FolderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF776CBA2C3FD17600C8D119 /* FolderCard.swift */; };
 		EF776CBD2C40CFF900C8D119 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF776CBC2C40CFF900C8D119 /* TextView.swift */; };
+		EF776D2D2C41435400C8D119 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF776D2C2C41435400C8D119 /* NavigationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		EF776CB82C3FC05300C8D119 /* NoteLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLogModel.swift; sourceTree = "<group>"; };
 		EF776CBA2C3FD17600C8D119 /* FolderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCard.swift; sourceTree = "<group>"; };
 		EF776CBC2C40CFF900C8D119 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		EF776D2A2C413E6000C8D119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EF776D2C2C41435400C8D119 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +129,10 @@
 		EF776C5B2C3D19EB00C8D119 /* notes */ = {
 			isa = PBXGroup;
 			children = (
+				EF776D2A2C413E6000C8D119 /* Info.plist */,
 				EF776C982C3D30A100C8D119 /* Config */,
 				EF776C872C3D24A700C8D119 /* Models */,
+				EF776D2B2C41434500C8D119 /* ViewModels */,
 				EF776C862C3D249700C8D119 /* Features */,
 				EF776C5C2C3D19EB00C8D119 /* notesApp.swift */,
 				EF776C5E2C3D19EB00C8D119 /* ContentView.swift */,
@@ -190,7 +195,6 @@
 			children = (
 				EF776CB52C3FB37C00C8D119 /* Components */,
 				EF776CAA2C3E97E400C8D119 /* NoteView.swift */,
-				EF776CAC2C3E982400C8D119 /* NoteViewModel.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -200,7 +204,6 @@
 			children = (
 				EF776C952C3D2DF600C8D119 /* Components */,
 				EF776C922C3D2D6A00C8D119 /* HabitView.swift */,
-				EF776C9F2C3D391F00C8D119 /* HabitViewModel.swift */,
 			);
 			path = Habit;
 			sourceTree = "<group>";
@@ -237,6 +240,16 @@
 				EF776CBC2C40CFF900C8D119 /* TextView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EF776D2B2C41434500C8D119 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EF776CAC2C3E982400C8D119 /* NoteViewModel.swift */,
+				EF776C9F2C3D391F00C8D119 /* HabitViewModel.swift */,
+				EF776D2C2C41435400C8D119 /* NavigationViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +397,7 @@
 				EF776CAD2C3E982400C8D119 /* NoteViewModel.swift in Sources */,
 				EF776CA02C3D391F00C8D119 /* HabitViewModel.swift in Sources */,
 				EF776C9B2C3D30B600C8D119 /* ToggleCheckboxStyle.swift in Sources */,
+				EF776D2D2C41435400C8D119 /* NavigationViewModel.swift in Sources */,
 				EF776CBD2C40CFF900C8D119 /* TextView.swift in Sources */,
 				EF776CB42C3EA20F00C8D119 /* FolderModel.swift in Sources */,
 				EF776C5D2C3D19EB00C8D119 /* notesApp.swift in Sources */,
@@ -553,6 +567,7 @@
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = notes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -582,6 +597,7 @@
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = notes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
